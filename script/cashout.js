@@ -1,7 +1,7 @@
 document.getElementById("cashout-btn").addEventListener("click", function () {
   // 1- get the agent number & validate
   const cashoutNumber = getValueFromInput("cashout-number");
-  if(cashoutNumber.length !=11) {
+  if (cashoutNumber.length != 11) {
     alert("invald number");
     return;
   }
@@ -9,9 +9,12 @@ document.getElementById("cashout-btn").addEventListener("click", function () {
   // 2- get the amount
   const cashoutAmount = getValueFromInput("cashout-amount");
   // 3- get the Current Balance , validate , convert to number
-  const balanceElement = document.getElementById("balance");
-  const balance = balanceElement.innerText;
-  console.log(balance);
+  // const balanceElement = document.getElementById("balance");
+  // const balance = balanceElement.innerText;
+  // console.log(balance);
+
+  const currentBalance = getBalance();
+
   // 4- Calculate balance
   const newBalance = Number(balance) - Number(cashoutAmount);
   console.log(newBalance);
@@ -22,7 +25,21 @@ document.getElementById("cashout-btn").addEventListener("click", function () {
   const pin = getValueFromInput("cashout-pin");
   if (pin === "1234") {
     alert("Cashout Succesful");
-    balanceElement.innerText = newBalance;
+    setBalance(newBalance);
+
+    // 1- history-container ke dhore niya ashbo
+
+        const history = document.getElementById("hiostory-container");
+        // 2- new div create korbo
+        const newHistory = document.createElement("div")
+        // 3- new div innerHTML add korbo
+        newHistory.innerHTML = `
+        <div class="transaction-card p-5 bg-base-100">
+            Cashout ${cashoutAmount} TAKA Success to ${cashoutNumber} , acc-no ${accno} at ${new Date()}
+        </div>
+        `
+        // 4- history container a newDiv append korbo
+        history.append(newHistory);
   } else {
     alert("invald pin");
     return;
