@@ -27,12 +27,14 @@ function showOnly(id) {
     const cashout = document.getElementById("cashout");
     const transfermoney = document.getElementById("transfermoney");
     const history = document.getElementById("history");
+    const paybill = document.getElementById("pay-bill");
     // console.log(`add money- ${addmoney} , cashout - ${cashout}`);
     // shobai k hide kore dao
     addmoney.classList.add("hidden");
     cashout.classList.add("hidden");
     transfermoney.classList.add("hidden");
     history.classList.add("hidden");
+    paybill.classList.add("hidden");
 
     // id wala element ta ke tumi show korba
     const selected = document.getElementById(id);

@@ -19,7 +19,7 @@ document.getElementById("cashout-btn").addEventListener("click", function () {
   const newBalance = Number(balance) - Number(cashoutAmount);
   console.log(newBalance);
   if (newBalance < 0) {
-    alert("invald amount");
+    alert("invalid amount");
     return;
   }
   const pin = getValueFromInput("cashout-pin");
@@ -29,13 +29,13 @@ document.getElementById("cashout-btn").addEventListener("click", function () {
 
     // 1- history-container ke dhore niya ashbo
 
-        const history = document.getElementById("hiostory-container");
+        const history = document.getElementById("history-container");
         // 2- new div create korbo
         const newHistory = document.createElement("div")
         // 3- new div innerHTML add korbo
         newHistory.innerHTML = `
         <div class="transaction-card p-5 bg-base-100">
-            Cashout ${cashoutAmount} TAKA Success to ${cashoutNumber} , acc-no ${accno} at ${new Date()}
+            Cashout ${cashoutAmount} TAKA Success to ${cashoutNumber} at ${new Date()}
         </div>
         `
         // 4- history container a newDiv append korbo

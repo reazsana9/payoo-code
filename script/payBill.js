@@ -1,25 +1,27 @@
-document.getElementById("add-money-btn").addEventListener("click", function () {
+document.getElementById("pay-bill-btn").addEventListener("click", function () {
     // 1 - bank account get
-    const bankAccount = getValueFromInput("add-money-bank");
+    const bankAccount = getValueFromInput("pay-bill-for");
     if (bankAccount == "Select a Bank") {
-        alert("please select a bank");
+        alert("please select a Bank");
         return;
     }
     // 2 - get bank account number
-    const accno = getValueFromInput("add-money-number");
-    if (accno.length != 11) {
+    const billAccno = getValueFromInput("bill-account-number");
+    if (billAccno.length != 11) {
         alert("invalid acc no");
         return;
     }
     // 3 - get amount
-    const amount = getValueFromInput("add-money-amount");
+    const amount = getValueFromInput("pay-bill-amount");
     const currentBalance = getBalance();
-    const newBalance = currentBalance + Number(amount);
-
-
-    const pin = getValueFromInput("add-money-pin");
+    const newBalance = currentBalance - Number(amount);
+    if (newBalance < 0) {
+        alert("invalid amount");
+        return;
+    }
+    const pin = getValueFromInput("pay-bill-pin");
     if (pin == "1234") {
-        alert(`Add Money Success from
+        alert(`Pay Bill Success from
              ${bankAccount} 
              at ${new Date()}`);
         setBalance(newBalance);
@@ -32,7 +34,7 @@ document.getElementById("add-money-btn").addEventListener("click", function () {
         // 3- new div innerHTML add korbo
         newHistory.innerHTML = `
         <div class="transaction-card p-5 bg-base-100">
-            Add Money Success from ${bankAccount} , acc-no ${accno} at ${new Date()}
+            Pay Bill Success for ${bankAccount} , acc-no ${billAccno} at ${new Date()}
         </div>
         `
         // 4- history container a newDiv append korbo
