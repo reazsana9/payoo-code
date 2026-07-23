@@ -21,9 +21,9 @@ document.getElementById("pay-bill-btn").addEventListener("click", function () {
     }
     const pin = getValueFromInput("pay-bill-pin");
     if (pin == "1234") {
-        alert(`Pay Bill Success for
-             ${bankAccount} 
-             at ${new Date()}`);
+        alert(`Pay Bill ${amount} TAKA Success for 
+            ${bankAccount} , acc-no ${billAccno} 
+            at ${new Date()}`);
         setBalance(newBalance);
 
         // 1- history-container ke dhore niya ashbo
