@@ -21,7 +21,7 @@ document.getElementById("pay-bill-btn").addEventListener("click", function () {
     }
     const pin = getValueFromInput("pay-bill-pin");
     if (pin == "1234") {
-        alert(`Pay Bill Success from
+        alert(`Pay Bill Success for
              ${bankAccount} 
              at ${new Date()}`);
         setBalance(newBalance);
@@ -34,7 +34,7 @@ document.getElementById("pay-bill-btn").addEventListener("click", function () {
         // 3- new div innerHTML add korbo
         newHistory.innerHTML = `
         <div class="transaction-card p-5 bg-base-100">
-            Pay Bill Success for ${bankAccount} , acc-no ${billAccno} at ${new Date()}
+            Pay Bill ${amount} TAKA Success for ${bankAccount} , acc-no ${billAccno} at ${new Date()}
         </div>
         `
         // 4- history container a newDiv append korbo
